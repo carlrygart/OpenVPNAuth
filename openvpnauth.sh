@@ -19,7 +19,7 @@ if [ $1 == "" ] || [ $1 == "help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; the
     echo "OpenVPN Authentication Script v1.0"
     echo "This is a script that enables OpenVPN authentication with username and password stored in a simple database."
     echo ""
-    echo "Place in OpenVPN root folder.
+    echo "Place in OpenVPN root folder."
     echo "Enable this script by adding following to your OpenVPN config (server.conf):"
     echo "script-security 2"
     echo "auth-user-pass-verify /etc/openvpn/openvpnauth/openvpnauth.sh via-file"
