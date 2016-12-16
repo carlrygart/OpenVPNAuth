@@ -15,7 +15,7 @@ db_file="$my_path/openvpnauth.db"
 log_file="$my_path/openvpnauth.log"
 
 #----------- Help message -----------#
-if [ $1 == "" ] || [ $1 == "help" ] || [ $1 == "--help" ] || [ $1 == "-h" ]; then
+if [[ $1 == "" ]] || [[ $1 == "help" ]] || [[ $1 == "--help" ]] || [[ $1 == "-h" ]]; then
     echo "OpenVPN Authentication Script v1.0"
     echo "This is a script that enables OpenVPN authentication with username and password stored in a simple database."
     echo ""
@@ -131,7 +131,7 @@ fi
 # Fetching hash from db.
 dollar_username='\$'$username'\$'
 db_user=$(cat $db_file | grep -e $dollar_username)
-if [ ! $db_user ]; then
+if [[ ! $db_user ]]; then
     echo "OpenVPN authentication failed: Login attempt for '$username'. User not i database"
     log "OpenVPN authentication failed: Login attempt for '$username'. User not i database"
     log "`env | awk '{printf "%s ", $0}'`"
@@ -145,10 +145,10 @@ passhash_inc_salt=$(mkpasswd -m sha-512 -S $db_salt $password)
 passhash=$(echo $passhash_inc_salt | cut -d '$' -f 4)
 
 # Checking if the hashes matches
-if [ $passhash == $db_passhash ]; then
+if [[ $passhash == $db_passhash ]]; then
     echo "OpenVPN authentication successful: User '$username'"
-	log "OpenVPN authentication successful: User '$username'"
-	exit 0
+    log "OpenVPN authentication successful: User '$username'"
+    exit 0
 else
     echo "OpenVPN authentication failed: Wrong password for user '$username'"
     log "OpenVPN authentication failed: Wrong password for user '$username'"
