@@ -1,6 +1,9 @@
 # OpenVPN Authentication Script v1.0
 This is a script that enables OpenVPN authentication with username and password stored in a simple database.
 
+## Requirements
+- mkpasswd
+
 ## Install
 - Place in OpenVPN root folder.
 - Enable this script by adding following to your OpenVPN config (server.conf):
